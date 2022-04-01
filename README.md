@@ -1,6 +1,6 @@
 # ivonet/mariadb Docker image
 
-A Made specific image for MySQL based on the standard mysql image.
+A Made specific image for MariaDB based on the standard MariaDB image.
 
 This image has to be build on your local machine to make the 
 development environment work.
@@ -8,6 +8,10 @@ development environment work.
 This image is tuned to monitor a TEST_DIR folder file up and running.
 if you put sql files into this folder they will be executed on the database
 and when done removed.
+
+This image is strongly based on the ivonet/mysql image with the same intentions
+The reason this image was created is that mysql does not have arm64 platform images
+and mariadb has.
 
 ## How to build
 
@@ -39,36 +43,3 @@ The `docker-compose.yml` file below exposes two native volumes:
 
 It will also enable a phpmyadmin for further db control...
 
-```text
-version: '2'
-
-services:
-  mariadb:
-    image: ivonet/mariadb
-    volumes:
-      - ./volumes/setup:/docker-entrypoint-initdb.d
-      - ./volumes/testdata/mariadb:/testdata
-      - mariadb-data:/var/lib/mariadb
-    ports:
-      - "3306:3306"
-    environment:
-        - MYSQL_ROOT_PASSWORD=secret
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:4.6.4-1
-    ports:
-      - "8888:80"
-    links:
-      - mariadb:mariadb
-    environment:
-      - MYSQL_USERNAME=root
-      - MYSQL_ROOT_PASSWORD=secret
-      - PMA_HOST=mariadb
-    depends_on:
-      - mariadb
-      
-volumes:
-  mariadb-data:
-    driver: local
-
-```
