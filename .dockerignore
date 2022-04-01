@@ -1,0 +1,10 @@
+.idea
+*.iml
+node_modules
+.DS_Store
+target
+volumes
+.gitignore
+docker-compose.yml
+VERSION
+README.md
