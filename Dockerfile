@@ -1,5 +1,5 @@
 FROM mariadb:10.7.3
-LABEL maintainer="Ivo Woltring <webmaster@ivonet.nl>"
+LABEL maintainer="Ivo Woltring <@ivonet>"
 
 ENV TEST_DIR=/testdata
 
