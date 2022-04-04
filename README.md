@@ -1,6 +1,6 @@
 # ivonet/mariadb Docker image
 
-A Made specific image for MariaDB based on the standard MariaDB image.
+A specific image for MariaDB based on the standard MariaDB image.
 
 This image has to be build on your local machine to make the 
 development environment work.
